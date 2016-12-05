@@ -21,9 +21,34 @@ public class AuthenticationController extends AbstractController {
 	public String signup(HttpServletRequest request, Model model) {
 		
 		// TODO - implement signup
+		//get parameters from request
+		
+		String usrName = request.getParameter("username");
+		String pswd = request.getParameter("password");
+		String cnfirmPswd = request.getParameter("verify");
+		
+		User user1 = new User();
+		boolean validUser = User.isValidUsername(usrName);
+   		boolean validPswd =  User. isValidPassword(pswd);
+  		//boolean matchingPswd = user1.isMatchingPassword(pswd);
+		
+		//validate parameters(username, password, verify)
+		//if they validate, create new user, & put them in the session(use function frm AbstractController)
+			if(validUser && validPswd && matchingPswd)
+				{User newUser = new User(usrName,pswd);
+				model.addAttribute("userName", usrName);
+				model.addAttribute("pswd",pswd);
+				userDao.save(newUser);
+				//Session thisSession = request.getSession();
+				setUserInSession (request.getSession(),newUser);
+				}
 		
 		return "redirect:blog/newpost";
+		
+		//Session thisSession = request.getSession
+	
 	}
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm() {
