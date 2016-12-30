@@ -73,7 +73,7 @@ public class User extends AbstractEntity {
 		Matcher matcher = validUsernamePattern.matcher(password);
 		return matcher.matches();
 	}
-	
+//	4-12 characters long, starts with a letter, and contains only letters, numbers, -, and _ 	
 	public static boolean isValidUsername(String username) {
 		Pattern validUsernamePattern = Pattern.compile("[a-zA-Z][a-zA-Z0-9_-]{4,11}");
 		Matcher matcher = validUsernamePattern.matcher(username);

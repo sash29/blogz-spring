@@ -6,7 +6,10 @@
 
 	<div th:replace="template :: navigation"></div>
 
-	<!-- TODO - display a single blog post -->
-
+	<!-- TODO - display a single blog post//Display a single post, with author and creation time.  -->
+	<h1  th:text="${post.title}"></h1>
+ 	<p  th:text="${post.body}"></p>
+ 	<p >written by <a th:href="'/blog/' + ${post.author.username}"><span th:text="${post.author.username}">
+ 	</span></a> on <span th:text="${#dates.format(post.created, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
 </body>
 </html>

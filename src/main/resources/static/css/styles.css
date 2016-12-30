@@ -9,6 +9,10 @@ body {
     color: red;
 }
 
+.info {
+	color: green;
+}
+
 label {
     display: block;
     font-size: 20px;

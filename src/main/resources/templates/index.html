@@ -7,8 +7,10 @@
 	<div th:replace="template :: navigation"></div>
 
 	<h1>blog users!</h1>
-
+	<ul>
 	<!--  TODO - list all users, with links to their blog pages -->
-
+	<li th:each="user : ${allUsers}"><a th:href="'/blog/' + ${user.username}">Posts by<span th:text="${user.username}"></span></a></li>
+	
+	</ul>
 </body>
 </html>
